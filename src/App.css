@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.background-image {
+  background-image: url("/src/images/pagebg2.png");
+}
