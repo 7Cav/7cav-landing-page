@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
 import Header from './Header';
+import Games from './Games';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -10,14 +11,20 @@ const useStyles = makeStyles((theme) => ({
       backgroundImage: `url(${process.env.PUBLIC_URL + "/assets/pagebg2.png"})`,
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
+
   },
 }));
 
 
 export default function App() {
   const classes = useStyles();
-    return <div className={classes.root}>
+    return (
+    <div className={classes.root}>
       <CssBaseline />
       <Header />
-    </div>;
+      <center>
+        <Games className={classes.games}/>
+      </center>
+    </div>
+    );
 }

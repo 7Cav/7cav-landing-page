@@ -10,10 +10,14 @@ const useStyles = makeStyles((theme) => ({
     appbarTitle: {
         flexGrow: '1',
     },
+    container: {
+        paddingTop: '35px',
+        textAlign: 'center',
+    },
     icons: {
-        position: 'absolute',
-        left: '50%',
-    }
+        justifyContent: 'center',
+        color: 'white',
+    },
 }));
 
 export default function Header() {
@@ -23,12 +27,13 @@ export default function Header() {
             <AppBar className={classes.appbar} elevation={0}>
                 <Toolbar className={classes.appbarWrapper}>
                     <h1 className={classes.appbarTitle}>7th CAVALRY GAMING</h1>
-                        {/* TODO: Add buttons/icons */}
-                        <span className={classes.icons}>Discord
-                        TeamSpeak</span>
                         Continue to Forums
                 </Toolbar>
             </AppBar>
+{/* TODO: Add buttons/icons */}
+            <div className={classes.container}>
+            <span className={classes.icons}>Discord TeamSpeak</span>
+            </div>
         </div>
     );
 }
