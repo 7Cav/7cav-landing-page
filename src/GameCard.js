@@ -11,13 +11,18 @@ import game from './game';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 600,
+    width: 500,
+    height: 300,
     background: 'none',
+    margin: '80px'
   },
   media: {
-    height: 140,
-    marginTop: '50px',
-    width: '80%',
+    //maxHeight: '100%',
+    height: '100%',
+    marginTop: '20px',
+    //maxWidth: '100%',
+    width: '100%',
+    objectFit: 'cover'
   },
   title: {
       color: "white",
