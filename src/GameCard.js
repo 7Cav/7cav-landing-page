@@ -8,13 +8,15 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import game from './game';
+import { render } from '@testing-library/react';
 
 const useStyles = makeStyles({
   root: {
     width: 500,
     height: 300,
     background: 'none',
-    margin: '80px'
+    margin: '80px',
+    transition: "transform 0.15s ease-in-out",
   },
   media: {
     //maxHeight: '100%',
@@ -27,21 +29,37 @@ const useStyles = makeStyles({
   title: {
       color: "white",
   },
+  /* content: {
+    display: 'block',
+  }, */
   desc: {
       color: "white",
   },
+  cardHovered: {
+    transform: "scale3d(1.05, 1.05, 1)",
+  },
 });
 
-export default function GameCard({ game }) {
+ export default function GameCard({ game }) {
   const classes = useStyles();
+  const [state, setState] = React.useState({
+    raised: false,
+    shadow: 1,
+  })
 
   return (
-    <Card className={classes.root}>
+    <Card 
+      className={classes.root}
+      classes={{root: state.raised ? classes.cardHovered : ""}}
+      onMouseOver={()=>setState({ raised: true, shadow: 3})}
+      onMouseOut={()=>setState({ raised: false, shadow: 1})}
+      raised={state.raised} zdepth={state.shadow}
+    >
         <CardMedia
           className={classes.media}
           image={game.imageUrl}
         />
-        <CardContent>
+        <CardContent className={classes.content}>
           <Typography 
             gutterBottom
             variant="h5"
@@ -58,14 +76,14 @@ export default function GameCard({ game }) {
             {game.description}
           </Typography>
         </CardContent>
-     {/*  <CardActions>
+     /*  <CardActions>
         <Button size="small" color="primary">
           Share
         </Button>
         <Button size="small" color="primary">
           Learn More
         </Button>
-      </CardActions> */}
+      </CardActions> 
     </Card>
   );
 }
